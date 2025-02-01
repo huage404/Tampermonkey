@@ -1,0 +1,21 @@
+// ==UserScript==
+// @name         清理 uview-plus 官网广告弹窗
+// @namespace    http://tampermonkey.net/
+// @version      2025-02-01
+// @description  清理 uview-plus 官网广告弹窗
+// @author       Rowan
+// @match        https://uiadmin.net/uview-plus/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uiadmin.net
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+     const timer = setInterval(() => {
+         const targetDom = document.querySelectorAll('.el-dialog__wrapper, .v-modal');
+         if(targetDom.length > 1) {
+             targetDom.forEach(i => i.style.zIndex = '-1');
+             clearInterval(timer);
+         }
+     }, 1000)
+})();
